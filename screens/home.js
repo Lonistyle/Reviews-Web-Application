@@ -15,6 +15,7 @@ export default function Home({navigation}){
 
     useEffect(() => {
         console.log("x")
+        console.log("y")
         let unsubscribed = false;
           getDocs(coursesRef)
           .then((querySnapshot) => {
