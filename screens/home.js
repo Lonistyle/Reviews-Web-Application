@@ -14,6 +14,7 @@ export default function Home({navigation}){
     const coursesRef=collection(db,"courses")
 
     useEffect(() => {
+        console.log("x")
         let unsubscribed = false;
           getDocs(coursesRef)
           .then((querySnapshot) => {
