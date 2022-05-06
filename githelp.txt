@@ -1,0 +1,4 @@
+git status - to see changes
+git add -A - add all changes to commit
+git -m commit "blabla" - commiting
+git push 

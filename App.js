@@ -3,6 +3,7 @@ import Home from './screens/home';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import Navigator from './routes/homeStack';
+import { useContext } from 'react';
 
 
 const getFonts= () => Font.loadAsync({

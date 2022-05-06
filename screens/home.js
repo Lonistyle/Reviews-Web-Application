@@ -3,10 +3,9 @@ import { globalStyles } from '../styles/global';
 import React,{useEffect, useState} from 'react';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import Card from '../shared/card';
-import { auth } from '../firebase';
-import {db} from '../firebase'
+import { auth,db } from '../firebase';
 import { collection,getDocs } from 'firebase/firestore';
-
+import firebase from 'firebase/compat';
 
 export default function Home({navigation}){
 
@@ -14,12 +13,10 @@ export default function Home({navigation}){
     const coursesRef=collection(db,"courses")
 
     useEffect(() => {
-        console.log("x")
-        console.log("y")
         let unsubscribed = false;
           getDocs(coursesRef)
           .then((querySnapshot) => {
-            if (unsubscribed) return; //
+            if (unsubscribed) return; 
             const data = querySnapshot.docs
             .map((doc) => ({ ...doc.data(), id: doc.id }));
               setCourses(data);
@@ -41,14 +38,14 @@ export default function Home({navigation}){
   
     return(
         <View style={globalStyles.container}>
-            <Text>logged in as {auth.currentUser?.email}</Text>
+            <Text>logged in as {auth.currentUser?.displayName}</Text>
             <FlatList 
             data={courses}
             renderItem={({item})=>
             (
                 <TouchableOpacity onPress={()=> navigation.navigate('Course',item)}>
                     <Card>
-                    <Text style={globalStyles.titleText}>{item.title}</Text>
+                    <Text style={globalStyles.titleText}>{item.name}</Text>
                     </Card>
                 </TouchableOpacity>
             )} />

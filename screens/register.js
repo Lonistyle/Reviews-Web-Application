@@ -13,7 +13,7 @@ export default function Register({navigation})
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
 
-    const handleSignUp=()=>{
+    const handleSignUp= async ()=>{
 
         auth
         .createUserWithEmailAndPassword(email,password)
@@ -21,9 +21,8 @@ export default function Register({navigation})
         .then(userCredentials =>{
             const user=userCredentials.user;
             user.updateProfile({displayName: name})
-            console.log( user+" was created successfully");
+            user.reload();
             navigation.navigate('Home',user);
-
         })
         .catch(error=>alert(error.message))
     }

@@ -3,15 +3,16 @@ import { globalStyles } from '../styles/global';
 import React from 'react';
 import { useState } from 'react';
 import {db} from '../firebase'
-import { addDoc, collection } from 'firebase/firestore';
+import { setDoc, collection } from 'firebase/firestore';
+import { doc } from 'firebase/firestore';
 
 export default function Admin({navigation}){
     const [course,setCourse]=useState('')
     const [lecturer,setLecturer]=useState('')
 
     const handleSetCourse= async ()=>{
-        const data = {title:course,body: lecturer,rating: 0};
-        await addDoc(collection(db,"courses"),data)
+        const data = {name:course,lecturer: lecturer,rating: 0,Reviewers:0};
+        await setDoc(doc(db,"courses",course),data)
         .then(alert("Courses added successfully."))
         .catch(function(err){
             alert("Cannot add data.")
