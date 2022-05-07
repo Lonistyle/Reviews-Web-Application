@@ -1,3 +1,4 @@
+import { withTheme } from "@emotion/react";
 import { StyleSheet } from "react-native";
 
 export const globalStyles=StyleSheet.create({
@@ -58,6 +59,18 @@ export const globalStyles=StyleSheet.create({
         marginTop: 10,
         fontSize:20
       },
+      reviewInput:{
+        alignSelf:'center',
+        width:200,
+        height:30,
+        justifyContent:'center',
+        backgroundColor: 'white',
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+        borderRadius: 10,
+        marginTop: 10,
+        fontSize:20
+      },
       buttonContainer: {
         alignSelf:'center',
         position:'relative',
@@ -81,6 +94,16 @@ export const globalStyles=StyleSheet.create({
         borderColor: '#0782F9',
         borderWidth: 2,
         fontSize:20
+      },
+      commentContainer:{
+        width: 35,
+        height: 25,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginHorizontal: 5,
+        marginBottom: 10,
+        borderWidth: 1,
+        borderRadius: 5,
       }
 
 })
