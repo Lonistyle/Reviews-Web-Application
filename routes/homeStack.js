@@ -7,7 +7,7 @@ import Register from "../screens/register";
 import Admin from "../screens/admin";
 
 const screens={
-    
+    Login:{screen:Login,navigationOptions:{title:'התחברות'}},
     Home:{screen:Home,navigationOptions:{title:'קורסים'}},
     Admin:{screen:Admin,navigationOptions:{title:'אזור מנהל'}},
     Login:{screen:Login,navigationOptions:{title:'התחברות'}},

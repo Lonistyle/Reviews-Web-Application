@@ -1,4 +1,4 @@
-import {Text, View,Button, RecyclerViewBackedScrollViewBase} from 'react-native';
+import {Text, View,Button, ImageBackground} from 'react-native';
 import Card from '../shared/card';
 import { globalStyles } from '../styles/global';
 import React from 'react';
@@ -11,9 +11,8 @@ import { collection } from 'firebase/firestore';
 import { auth } from '../firebase';
 import { useEffect } from 'react';
 import { getDocs } from 'firebase/firestore';
-import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Rating';
-
+import image from '../assets/wallpaper.png'
 export default function Course({navigation}){
     const [rating,setRating]=useState(0)
     const [review,setReview]=useState([])
@@ -56,6 +55,7 @@ export default function Course({navigation}){
     
 
     return(
+      <ImageBackground source={image} style={{width: '100%', height: '100%'}} >
         <View style={globalStyles.container}>
             <Card>
             <Text>שם קורס: {navigation.getParam('name')}</Text>
@@ -73,6 +73,7 @@ export default function Course({navigation}){
 
 
         </View>
+        </ImageBackground>
     )
 }
 

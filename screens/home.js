@@ -1,11 +1,11 @@
-import {Text, View } from 'react-native';
+import {Text, View,ImageBackground } from 'react-native';
 import { globalStyles } from '../styles/global';
 import React,{useEffect, useState} from 'react';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
-import Card from '../shared/card';
+import Card from '../shared/card'
 import { auth,db } from '../firebase';
 import { collection,getDocs } from 'firebase/firestore';
-import firebase from 'firebase/compat';
+import image from '../assets/wallpaper.png'
 
 export default function Home({navigation}){
 
@@ -37,6 +37,7 @@ export default function Home({navigation}){
     }
   
     return(
+      <ImageBackground source={image} style={{width: '100%', height: '100%'}} >
         <View style={globalStyles.container}>
             <Text>logged in as {auth.currentUser?.displayName}</Text>
             <FlatList 
@@ -55,8 +56,9 @@ export default function Home({navigation}){
                 </TouchableOpacity>
              <TouchableOpacity onPress={handleSignOut} style={globalStyles.button}>
                     <Text style={globalStyles.buttonOutLineText}>   SignOut   </Text>
-                </TouchableOpacity>
-        </View>
+                </TouchableOpacity>  
+            </View>
+        </ImageBackground>
     )
 }
 

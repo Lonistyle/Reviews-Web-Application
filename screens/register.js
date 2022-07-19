@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View} from 'react-native'
+import { StyleSheet, Text, View, ImageBackground} from 'react-native'
 import React from 'react'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import { globalStyles } from '../styles/global'
 import { useState } from 'react'
 import { auth, db } from '../firebase'
 import { getAuth, updateProfile } from "firebase/auth";
-
+import image from '../assets/wallpaper.png'
 
 export default function Register({navigation})
 {
@@ -22,12 +22,13 @@ export default function Register({navigation})
             const user=userCredentials.user;
             user.updateProfile({displayName: name})
             user.reload();
-            navigation.navigate('Home',user);
+            navigation.navigate('Login',user);
         })
         .catch(error=>alert(error.message))
     }
 
     return(
+        <ImageBackground source={image} style={{width: '100%', height: '100%'}} >
         <View>
             <View styles={globalStyles.inputContainer}>
             <TextInput 
@@ -60,5 +61,6 @@ export default function Register({navigation})
 
             </View>
         </View>
+        </ImageBackground>
     )
 }

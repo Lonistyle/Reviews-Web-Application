@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View} from 'react-native'
+import { StyleSheet, Text, View, ImageBackground} from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import { globalStyles } from '../styles/global'
 import React,{ useState,useEffect } from 'react'
 import { auth } from '../firebase'
+import image from '../assets/wallpaper.png'
 
 
 export default function Login({navigation}){
@@ -27,6 +28,7 @@ export default function Login({navigation}){
 
 
     return(
+        <ImageBackground source={image} style={{width: '100%', height: '100%'}} >
         <View>
             <View styles={globalStyles.inputContainer}>
                 <TextInput 
@@ -54,5 +56,6 @@ export default function Login({navigation}){
 
             </View>
         </View>
+        </ImageBackground>
     )
 }

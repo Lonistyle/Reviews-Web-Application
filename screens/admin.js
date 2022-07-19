@@ -1,11 +1,11 @@
-import { TextInput, Text, View,TouchableOpacity } from 'react-native';
+import { TextInput, Text, View,TouchableOpacity,ImageBackground} from 'react-native';
 import { globalStyles } from '../styles/global';
 import React from 'react';
 import { useState } from 'react';
 import {db} from '../firebase'
 import { setDoc, collection } from 'firebase/firestore';
 import { doc } from 'firebase/firestore';
-
+import image from '../assets/wallpaper.png'
 export default function Admin({navigation}){
     const [course,setCourse]=useState('')
     const [lecturer,setLecturer]=useState('')
@@ -21,7 +21,7 @@ export default function Admin({navigation}){
 
 
     return(
-        <View>
+        <ImageBackground source={image} style={{width: '100%', height: '100%'}} >
         <View styles={globalStyles.inputContainer}>
             <TextInput 
             placeholder='שם קורס'
@@ -40,9 +40,9 @@ export default function Admin({navigation}){
             <TouchableOpacity onPress={handleSetCourse} style={globalStyles.button}>
                 <Text style={globalStyles.buttonOutLineText}>Add Course</Text>
             </TouchableOpacity>
-
-        </View>
     </View>
+    </ImageBackground>
+
     )
 }
 
